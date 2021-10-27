@@ -3,6 +3,7 @@ package com.gzeinnumer.coroutinesretrofitexample
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.gzeinnumer.coroutinesretrofitexample.data.model.ResponseUsers
 import com.gzeinnumer.coroutinesretrofitexample.data.model.Todo
 import com.gzeinnumer.coroutinesretrofitexample.data.repository.TodoRepository
 import kotlinx.coroutines.Dispatchers
@@ -24,6 +25,34 @@ class CorouViewModelVM : ViewModel() {
                 try {
                     val result = repo.getTodo(id)
                     _todo.postValue(result)
+                } catch (throwable: Throwable) {
+                    when (throwable) {
+                        is IOException -> {
+                            _error.postValue("Network Error")
+                        }
+                        is HttpException -> {
+                            val code = throwable.code()
+
+                            val errorResponse = throwable.message()
+                            _error.postValue("Error $code $errorResponse")
+                        }
+                        else -> {
+                            _error.postValue("Unknown Error")
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //todo 27
+    val _users = MutableLiveData<List<ResponseUsers>>()
+    fun getUsers() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                try {
+                    val result = repo.getUsers()
+                    _users.postValue(result)
                 } catch (throwable: Throwable) {
                     when (throwable) {
                         is IOException -> {

@@ -1,5 +1,6 @@
 package com.gzeinnumer.coroutinesretrofitexample.data
 
+import com.gzeinnumer.coroutinesretrofitexample.data.model.ResponseUsers
 import com.gzeinnumer.coroutinesretrofitexample.data.model.Todo
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -10,6 +11,10 @@ import retrofit2.http.Path
 interface Webservices {
     @GET("/todos/{id}")
     suspend fun getTodo(@Path("id") id: Int): Todo
+
+    //todo 25
+    @GET("/users")
+    suspend fun getUsers(): List<ResponseUsers>
 }
 
 val myApi: Webservices by lazy {

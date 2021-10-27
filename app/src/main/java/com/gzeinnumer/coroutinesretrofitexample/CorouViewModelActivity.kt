@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.gzeinnumer.coroutinesretrofitexample.data.model.Todo
 import com.gzeinnumer.coroutinesretrofitexample.databinding.ActivityCorouViewModelBinding
 import com.gzeinnumer.coroutinesretrofitexample.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_corou_view_model.*
 
 class CorouViewModelActivity : AppCompatActivity() {
 
@@ -27,6 +28,15 @@ class CorouViewModelActivity : AppCompatActivity() {
         binding.btnRequest.setOnClickListener {
             btnRequestAction()
         }
+
+        //todo 29
+        binding.btnRequestList.setOnClickListener {
+            btnRequestListAction()
+        }
+    }
+
+    private fun btnRequestListAction() {
+
     }
 
     private fun initObserver() {
@@ -38,6 +48,11 @@ class CorouViewModelActivity : AppCompatActivity() {
             if (error.isNotEmpty()) {
                 showError(error)
             }
+        })
+
+        //todo 28
+        vm._users.observe(this, Observer { users ->
+            binding.tvResultList.text = users.toString()
         })
     }
 
