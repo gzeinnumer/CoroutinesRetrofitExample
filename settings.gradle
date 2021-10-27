@@ -4,9 +4,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
-        //todo 4
         maven { url 'https://jitpack.io' }
-        //todo 5 Sync Now
     }
 }
 rootProject.name = "Coroutines Retrofit Example"

@@ -11,7 +11,6 @@ import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.io.IOException
 
-//todo 16
 class CorouViewModelVM : ViewModel() {
 
     private var repo = TodoRepository()
@@ -32,6 +31,7 @@ class CorouViewModelVM : ViewModel() {
                         }
                         is HttpException -> {
                             val code = throwable.code()
+
                             val errorResponse = throwable.message()
                             _error.postValue("Error $code $errorResponse")
                         }

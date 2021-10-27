@@ -20,21 +20,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //todo 10
         repository = TodoRepository()
 
         binding.btnNoViewmodel.setOnClickListener {
-            //todo 11
             btnNoViewmodelAction()
         }
 
-        //todo 14
         binding.btnToActivityViewmodel.setOnClickListener {
             startActivity(Intent(applicationContext, CorouViewModelActivity::class.java))
         }
     }
 
-    //todo 12
     private fun btnNoViewmodelAction() {
         lifecycleScope.launch {
             val rnd = (1..66).random()
@@ -46,5 +42,4 @@ class MainActivity : AppCompatActivity() {
     private fun showResult(result: Todo) {
         binding.tvResult.text = result.toString()
     }
-    //end todo 12
 }
