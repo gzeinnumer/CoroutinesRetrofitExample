@@ -48,12 +48,11 @@ class CorouViewModelActivity : AppCompatActivity() {
     }
 
     private fun showError(error: String?) {
-        Toast.makeText(this, "Error $error", Toast.LENGTH_SHORT).show()
+        binding.tvResult.text = "Error $error"
     }
 
     private fun showResult(result: Todo) {
-        Log.d("debug", "tag result $result")
-        Toast.makeText(this, "result ${result.title}", Toast.LENGTH_SHORT).show()
+        binding.tvResult.text = "result ${result.title}"
     }
     //end todo 21
 
