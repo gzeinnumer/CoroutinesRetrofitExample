@@ -3,7 +3,7 @@ package com.gzeinnumer.coroutinesretrofitexample
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gzeinnumer.coroutinesretrofitexample.data.model.ResponseUsers
+import com.gzeinnumer.coroutinesretrofitexample.data.model.ResponseUsersItem
 import com.gzeinnumer.coroutinesretrofitexample.data.model.Todo
 import com.gzeinnumer.coroutinesretrofitexample.data.repository.TodoRepository
 import kotlinx.coroutines.Dispatchers
@@ -46,7 +46,7 @@ class CorouViewModelVM : ViewModel() {
     }
 
     //todo 27
-    val _users = MutableLiveData<List<ResponseUsers>>()
+    val _users = MutableLiveData<List<ResponseUsersItem>>()
     fun getUsers() {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {

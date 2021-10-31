@@ -35,10 +35,6 @@ class CorouViewModelActivity : AppCompatActivity() {
         }
     }
 
-    private fun btnRequestListAction() {
-
-    }
-
     private fun initObserver() {
         vm._todo.observe(this, Observer { todo ->
             showResult(todo)
@@ -67,5 +63,10 @@ class CorouViewModelActivity : AppCompatActivity() {
     private fun btnRequestAction() {
         val rnd = (1..66).random()
         vm.getTodo(rnd)
+    }
+
+    //todo 30
+    private fun btnRequestListAction() {
+        vm.getUsers()
     }
 }
